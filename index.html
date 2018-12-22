@@ -229,11 +229,11 @@
         var chart = new google.visualization.LineChart(document.getElementById('chart'));
         chart.draw(view, options);
       }
-      setTimeout(drawHousesChart, 2500);
-      setTimeout(drawHousesChart2, 7500);
-      setTimeout (drawBanksChart, 12500);
+      setTimeout(drawHousesChart, 5000);
+      setTimeout(drawHousesChart2, 10000);
+      setTimeout (drawBanksChart, 15000);
       setTimeout (drawRateChart, 17500);
-      setInterval(function (){ setTimeout(drawHousesChart, 5000);setTimeout(drawHousesChart2, 5000); setTimeout (drawBanksChart, 10000); setTimeout (drawRateChart, 15000); }, 15000);
+      setInterval(function (){ setTimeout(drawHousesChart, 5000);setTimeout(drawHousesChart2, 10000); setTimeout (drawBanksChart, 15000); setTimeout (drawRateChart, 17500); }, 15000);
 
     </script>
     <style type>
