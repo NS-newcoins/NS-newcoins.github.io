@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="600">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawHousesChart);
+
+      function drawHousesChart() {
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1Rz88nTJ0KAJD-uv8D4mWZ84fMJ0bSszfBV9RXNuSS8g/edit?ts=5c6c0af6#gid=301941809&range=I21:H2";
+        var query = new google.visualization.Query(spreadsheetUrl);
+        query.send(handleHousesChart);
+      }
+
+      function handleHousesChart(response){
+        var data = response.getDataTable();
+        var options = {
+          annotations: {
+            textStyle: {
+              fontSize: 20
+            }
+          },
+          chartArea:{left:'8%',top:'8%',width:'84%',height:'80%'},
+          hAxis: {
+            title:'Стенд',
+            textStyle: {
+              fontSize: 8
+            },
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            }
+          },
+          vAxis: {
+            title:'Голоса',
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            },
+            minorGridlines: {
+              count: 5
+            },
+            minValue: '0'
+          },
+          title:'Лучший стенд',
+          titleTextStyle: {
+            fontSize: 50
+          },
+          width: window.innerWidth * 0.95,
+          height: window.innerHeight * 0.95,
+          legend:'none'
+        };
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([7, 8]);
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+        chart.draw(view, options);
+      }
+      setTimeout(drawHousesChart, 5000);
+      setInterval(function (){ setTimeout(drawHousesChart, 5000); }, 15000);
+    </script>
+    <style type>
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      body {
+        font-size: 3em;
+      }
+    </style>
+  </head>
+
+  <body class="center">
+    <div id="chart" align="center"></div>
+  </body>
+
+</html>
