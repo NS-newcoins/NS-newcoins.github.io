@@ -9,11 +9,11 @@
 
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawHousesChart);
-   google.charts.setOnLoadCallback(drawSecondChart);
+      google.charts.setOnLoadCallback(drawSecondChart);
       function drawHousesChart() {
         var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1Rz88nTJ0KAJD-uv8D4mWZ84fMJ0bSszfBV9RXNuSS8g/edit?ts=5c6c0af6#gid=301941809&range=I21:H2";
         var query = new google.visualization.Query(spreadsheetUrl);
-       
+       query.send(handleSecondChart);
       }
       function drawSecondChart() {
         var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1mh6miFWZEP2faNjpEFk-rynHCW5nh187pWuf5DZ0ZkM/edit#gid=7472337&range=D2:E23";
@@ -108,9 +108,9 @@
         var chart1 = new google.visualization.ColumnChart(document.getElementById('chart'));
         chart.draw(view, options);
       }
-     
+      setTimeout(drawHousesChart, 5000);
       setTimeout(drawSecondChart, 5000);
-      setInterval(function (){ setTimeout(drawSecondChart, 5000);  }, 5000);
+      setInterval(function (){ setTimeout(drawSecondChart, 5000); setTimeout(drawHousesChart, 5000);  }, 5000);
     </script>
     <style type>
       .center {
