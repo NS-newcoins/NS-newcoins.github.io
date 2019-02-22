@@ -15,6 +15,11 @@
         var query = new google.visualization.Query(spreadsheetUrl);
         query.send(handleHousesChart);
       }
+      function drawSecondChart() {
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1mh6miFWZEP2faNjpEFk-rynHCW5nh187pWuf5DZ0ZkM/edit#gid=7472337&range=D2:E23";
+        var query = new google.visualization.Query(spreadsheetUrl);
+        query.send(handleSecondChart);
+      }
 
       function handleHousesChart(response){
         var data = response.getDataTable();
@@ -54,6 +59,44 @@
           height: window.innerHeight * 0.95,
           legend:'none'
         };
+         function handleSecondChart(response){
+        var data = response.getDataTable();
+        var options = {
+          annotations: {
+            textStyle: {
+              fontSize: 20
+            }
+          },
+          chartArea:{left:'8%',top:'8%',width:'84%',height:'80%'},
+          hAxis: {
+            title:'Экспонат',
+            textStyle: {
+              fontSize: 8
+            },
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            }
+          },
+          vAxis: {
+            title:'Голоса',
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            },
+            minorGridlines: {
+              count: 5
+            },
+            minValue: '0'
+          },
+          title:'Лучший экспонат',
+          titleTextStyle: {
+            fontSize: 50
+          },
+          width: window.innerWidth * 0.95,
+          height: window.innerHeight * 0.95,
+          legend:'none'
+        };
 
         var view = new google.visualization.DataView(data);
         view.setColumns([7, 8]);
@@ -61,7 +104,8 @@
         chart.draw(view, options);
       }
       setTimeout(drawHousesChart, 5000);
-      setInterval(function (){ setTimeout(drawHousesChart, 5000); }, 15000);
+      setTimeout(drawSecondChart, 5000);
+      setInterval(function (){ setTimeout(drawSecondChart, 5000); setTimeout(drawHousesChart, 5000); }, 15000);
     </script>
     <style type>
       .center {
