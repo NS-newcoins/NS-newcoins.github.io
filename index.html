@@ -9,7 +9,6 @@
 
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawHousesChart);
-   google.charts.setOnLoadCallback(drawSecondChart);
       function drawHousesChart() {
         var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1Rz88nTJ0KAJD-uv8D4mWZ84fMJ0bSszfBV9RXNuSS8g/edit?ts=5c6c0af6#gid=301941809&range=I21:H2";
         var query = new google.visualization.Query(spreadsheetUrl);
