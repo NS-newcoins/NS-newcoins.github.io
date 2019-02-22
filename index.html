@@ -10,12 +10,12 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawHousesChart);
       function drawHousesChart() {
-        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1Rz88nTJ0KAJD-uv8D4mWZ84fMJ0bSszfBV9RXNuSS8g/edit?ts=5c6c0af6#gid=301941809&range=I21:H2";
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1Rz88nTJ0KAJD-uv8D4mWZ84fMJ0bSszfBV9RXNuSS8g/edit?sheet=list&#gid=802671317&range=H2:I21";
         var query = new google.visualization.Query(spreadsheetUrl);
         query.send(handleHousesChart);
       }
       function drawSecondChart() {
-        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1mh6miFWZEP2faNjpEFk-rynHCW5nh187pWuf5DZ0ZkM/edit#gid=7472337&range=H2:I23";
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1mh6miFWZEP2faNjpEFk-rynHCW5nh187pWuf5DZ0ZkM/edit?sheet=list2#gid=7472337&range=A1:B23";
         var query = new google.visualization.Query(spreadsheetUrl);
         query.send(handleSecondChart);
       }
