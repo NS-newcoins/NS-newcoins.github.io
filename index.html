@@ -65,8 +65,8 @@
         chart.draw(view, options);
       }
          function handleSecondChart(response){
-        var data1 = response.getDataTable();
-        var options1 = {
+        var data = response.getDataTable();
+        var options = {
           annotations: {
             textStyle: {
               fontSize: 20
@@ -103,14 +103,14 @@
           legend:'none'
         };
 
-        var view1 = new google.visualization.DataView(data1);
+        var view1 = new google.visualization.DataView(data);
         view.setColumns([7, 8]);
         var chart1 = new google.visualization.ColumnChart(document.getElementById('chart'));
-        chart.draw(view1, options1);
+        chart.draw(view, options);
       }
       setTimeout(drawHousesChart, 5000);
       setTimeout(drawSecondChart, 5000);
-      setInterval(function (){ setTimeout(drawSecondChart, 5000); setTimeout(drawHousesChart, 5000); }, 15000);
+      setInterval(function (){ setTimeout(drawSecondChart, 5000); setTimeout(drawHousesChart, 5000); }, 5000);
     </script>
     <style type>
       .center {
