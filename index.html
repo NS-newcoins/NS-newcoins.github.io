@@ -107,9 +107,70 @@
         var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
         chart.draw(view, options);
       }
+<<<<<<< HEAD
       setTimeout(drawHousesChart, 5000);
       setTimeout(drawSecondChart, 10000);
       setInterval(function (){ setTimeout(drawSecondChart, 5000); setTimeout(drawHousesChart, 10000); },15000);
+=======
+
+      function handleBanksChart(response){
+        var data = response.getDataTable();
+        var options = {
+          annotations: {
+            textStyle: {
+              fontSize: 19
+            }
+          },
+          chartArea:{left:'8%',top:'8%',width:'84%',height:'80%'},
+          hAxis: {
+            textStyle: {
+              fontSize: 15
+            },
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            }
+          },
+          vAxis: {
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            },
+            minorGridlines: {
+              count: 5
+            },
+            minValue: '0'
+          },
+          title:'Общие сборы',
+          titleTextStyle: {
+            fontSize: 50
+          },
+          width: window.innerWidth * 0.95,
+          height: window.innerHeight * 0.95,
+          legend:'none'
+        };
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation"
+                       }]);
+        var formatter = new google.visualization.NumberFormat({suffix: ' руб.', groupingSymbol: ' '});
+        formatter.format(data, 1); // Apply formatter to second column
+
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+        chart.draw(view, options);
+      }
+      setTimeout(drawHousesChart, 2500);
+      setTimeout(drawHousesChart2, 7500);
+      setTimeout (drawBanksChart, 12500);
+      setTimeout (drawRateChart, 17500);
+      setInterval(function (){ setTimeout(drawHousesChart, 5000);setTimeout(drawHousesChart2, 5000); setTimeout (drawBanksChart, 10000); setTimeout (drawRateChart, 15000); }, 15000);
+
+>>>>>>> parent of 647f3d3... Please send help
     </script>
     <style type>
       .center {
