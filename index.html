@@ -107,11 +107,6 @@
         var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
         chart.draw(view, options);
       }
-<<<<<<< HEAD
-      setTimeout(drawHousesChart, 5000);
-      setTimeout(drawSecondChart, 10000);
-      setInterval(function (){ setTimeout(drawSecondChart, 5000); setTimeout(drawHousesChart, 10000); },15000);
-=======
 
       function handleBanksChart(response){
         var data = response.getDataTable();
@@ -169,8 +164,6 @@
       setTimeout (drawBanksChart, 12500);
       setTimeout (drawRateChart, 17500);
       setInterval(function (){ setTimeout(drawHousesChart, 5000);setTimeout(drawHousesChart2, 5000); setTimeout (drawBanksChart, 10000); setTimeout (drawRateChart, 15000); }, 15000);
-
->>>>>>> parent of 647f3d3... Please send help
     </script>
     <style type>
       .center {
