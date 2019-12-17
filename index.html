@@ -11,7 +11,7 @@
       google.charts.setOnLoadCallback(drawRateChart);
 
       function drawRateChart() {
-        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit?sheet=Rate&range=B2";
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit#gid=0&range=B2";
         var query = new google.visualization.Query(spreadsheetUrl);
         query.send(handleRateChart);
       }
