@@ -16,11 +16,11 @@
         query.send(handleRateChart);
       }
 
-      function drawHousesChart() {
+    /*  function drawHousesChart() {
         var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit?sheet=ShopsProfit&range=A2:B103";
         var query = new google.visualization.Query(spreadsheetUrl);
         query.send(handleHousesChart);
-      }
+      }*/
 
       function drawBanksChart() {
         var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit?sheet=TotalProfit&range=A9:B29";
@@ -42,7 +42,7 @@
         document.getElementById("chart").innerHTML = "1 NWC = " + data.getValue(1, 1) + " руб.";
       }
 
-      function handleHousesChart(response){
+      /*function handleHousesChart(response){
         var data = response.getDataTable();
         var options = {
           annotations: {
@@ -90,7 +90,7 @@
                        }]);
         var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
         chart.draw(view, options);
-      }
+      }*/
 
       function handleBanksChart(response){
         var data = response.getDataTable();
@@ -120,7 +120,7 @@
             },
             minValue: '0'
           },
-          title:'Общие сборы',
+          title:'Общие сборы Новошкольной ярмарки 2019',
           titleTextStyle: {
             fontSize: 50
           },
@@ -144,10 +144,10 @@
         chart.draw(view, options);
       }
 
-      setTimeout(drawHousesChart, 5000);
+      /*setTimeout(drawHousesChart, 5000);*/
       setTimeout (drawBanksChart, 10000);
       setTimeout (drawRateChart, 15000);
-      setInterval(function (){ setTimeout(drawHousesChart, 5000); setTimeout (drawBanksChart, 10000); setTimeout (drawRateChart, 15000); }, 15000);
+      setInterval(function (){ /*setTimeout(drawHousesChart, 5000);*/ setTimeout (drawBanksChart, 10000); setTimeout (drawRateChart, 15000); }, 15000);
 
     </script>
     <style type>
