@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="600">
+    <img src="cap.png" alt="опа чирик">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawBanksChart);
+
+    /*  function drawRateChart() {
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit#gid=0&range=B2";
+        var query = new google.visualization.Query(spreadsheetUrl);
+        query.send(handleRateChart);
+      }*/
+
+    /*  function drawHousesChart() {
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit?sheet=ShopsProfit&range=A2:B103";
+        var query = new google.visualization.Query(spreadsheetUrl);
+        query.send(handleHousesChart);
+      }*/
+
+      function drawBanksChart() {
+        var spreadsheetUrl = "https://docs.google.com/spreadsheets/d/1QzdJdlkuANhB2ASYF_gFfBxAvjU57BEOUMBg4R2WK2Y/edit?sheet=TotalProfit&range=A9:B29";
+        var query = new google.visualization.Query(spreadsheetUrl);
+        query.send(handleBanksChart);
+      }
+
+  /*    function handleRateChart(response){
+        var data = response.getDataTable();
+        /*var options = {
+          'title':'Курс ньюкоина',
+          'width':window.innerWidth * .9,
+          'height':600,
+          'curveType':'none',
+          'legend':'none'
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+        chart.draw(data, options);*/
+      // document.getElementById("chart").innerHTML = "1 NWC = " + data.getValue(1, 1) + " руб.";
+  //  }*/
+
+      /*function handleHousesChart(response){
+        var data = response.getDataTable();
+        var options = {
+          annotations: {
+            textStyle: {
+              fontSize: 20
+            }
+          },
+          chartArea:{left:'8%',top:'8%',width:'84%',height:'80%'},
+          hAxis: {
+            title:'Номер торгового дома',
+            textStyle: {
+              fontSize: 8
+            },
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            }
+          },
+          vAxis: {
+            title:'Выручка в Ньюкоинах',
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            },
+            minorGridlines: {
+              count: 5
+            },
+            minValue: '0'
+          },
+          title:'Выручка торговых домов',
+          titleTextStyle: {
+            fontSize: 50
+          },
+          width: window.innerWidth * 0.95,
+          height: window.innerHeight * 0.95,
+          legend:'none'
+        };
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation"
+                       }]);
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+        chart.draw(view, options);
+      }*/
+
+      function handleBanksChart(response){
+        var data = response.getDataTable();
+        var options = {
+          annotations: {
+            textStyle: {
+              fontSize: 19
+            }
+          },
+          chartArea:{left:'8%',top:'8%',width:'84%',height:'80%'},
+          hAxis: {
+            textStyle: {
+              fontSize: 15
+            },
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            }
+          },
+          vAxis: {
+            titleTextStyle: {
+              fontSize: 28,
+              italic: 0
+            },
+            minorGridlines: {
+              count: 5
+            },
+            minValue: '0'
+          },
+          title:'Общие сборы Новошкольной ярмарки 2019',
+          titleTextStyle: {
+            fontSize: 50
+          },
+          width: window.innerWidth * 0.95,
+          height: window.innerHeight * 0.85,
+          legend:'none'
+        };
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation"
+                       }]);
+        var formatter = new google.visualization.NumberFormat({suffix: ' руб.', groupingSymbol: ' '});
+        formatter.format(data, 1); // Apply formatter to second column
+
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart'));
+        chart.draw(view, options);
+      }
+
+      /*setTimeout(drawHousesChart, 5000);*/
+      setTimeout (drawBanksChart, 10000);
+      //setTimeout (drawRateChart, 5000);
+      setInterval(function (){ /*setTimeout(drawHousesChart, 5000);*/ setTimeout (drawBanksChart, 10000); /*setTimeout (drawRateChart, 5000);*/ }, 5000);
+
+    </script>
+    <style type>
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 156px;
+      }
+      body {
+        font-size: 8em;
+        margin-top: 156px;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body class="center">
+
+    <div id="chart" align="center"</div>
+  </body>
+
+</html>
